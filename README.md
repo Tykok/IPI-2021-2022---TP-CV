@@ -6,7 +6,9 @@ Create a spring project to show a CV, and add somes endpoint used to add value f
 
 The application need to return a list of all user with each a list of skills and competences.
 
-## SQL Script for the database
+## Database
+
+### SQL Script
 
 ```sql
 CREATE TABLE personne(
@@ -43,3 +45,6 @@ CREATE TABLE experience(
    FOREIGN KEY(id_personne) REFERENCES personne(id)
 );
 ```
+
+### MERISE - Modèle conceptuel des données
+![image](https://user-images.githubusercontent.com/56304246/157238412-738dd02a-a4ce-44fc-bded-12cb5424425b.png)
