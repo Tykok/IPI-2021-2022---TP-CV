@@ -14,6 +14,9 @@ public class Skills {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "titre")
+    private String titre;
+
     @Column(name = "type")
     private TypeSkills type;
 
@@ -66,5 +69,13 @@ public class Skills {
 
     public void setPersonne(Personne personne) {
         this.personne = personne;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 }

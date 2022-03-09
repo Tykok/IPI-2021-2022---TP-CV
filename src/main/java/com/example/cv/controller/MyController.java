@@ -1,37 +1,34 @@
 package com.example.cv.controller;
 
+import com.example.cv.entities.Personne;
+import com.example.cv.helper.exception.InvalidArgumentException;
+import com.example.cv.service.PersonneService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class MyController {
 
-    public class User {
+    private PersonneService personneService;
 
-        private String name;
-
-        public User(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
+    public MyController(PersonneService personneService) {
+        this.personneService = personneService;
     }
 
     @GetMapping("")
     private String index(Model model) {
-        ArrayList<User> users = new ArrayList<>();
-        model.addAttribute("users", users);
+        List<Personne> users = personneService.findAll();
+        model.addAttribute("personnes", users);
         return "index";
     }
 
-    @GetMapping("/user")
-    private String getUserCv(Model model, @RequestParam(value = "id", defaultValue = "") int userId) {
+    @GetMapping("/cv")
+    private String getUserCv(Model model, @RequestParam(value = "id", defaultValue = "") long userId) throws InvalidArgumentException {
+        model.addAttribute("personne", personneService.findById(userId));
         return "template_CV";
     }
 }

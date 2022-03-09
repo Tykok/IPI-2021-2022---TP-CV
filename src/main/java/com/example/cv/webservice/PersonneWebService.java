@@ -18,7 +18,7 @@ public class PersonneWebService {
     ) {
         this.personneService = personneService;
     }
-
+/*
     @GetMapping()
     public List<Personne> getAll() {
         List<Personne> personnes = personneService.findAll();
@@ -30,12 +30,12 @@ public class PersonneWebService {
         Personne personne = personneService.findById(id);
         return personne;
     }
-
+*/
     @PostMapping()
     public Personne save(@RequestBody Personne personne) {
         return personneService.save(personne);
     }
-
+/*
     @GetMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id) {
         personneService.deleteById(id);
@@ -45,4 +45,5 @@ public class PersonneWebService {
     public void deleteAll() {
         personneService.deleteAll();
     }
+*/
 }

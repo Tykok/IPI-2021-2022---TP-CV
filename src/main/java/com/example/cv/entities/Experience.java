@@ -15,6 +15,9 @@ public class Experience {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "titre")
+    private String titre;
+
     @Column(name = "type")
     private TypeExperience type;
 
@@ -22,10 +25,10 @@ public class Experience {
     private String description;
 
     @Column(name = "date_debut")
-    private Date dateDebut;
+    private String date_debut;
 
     @Column(name = "date_fin")
-    private Date dateFin;
+    private String date_fin;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_personne")
@@ -56,20 +59,20 @@ public class Experience {
         this.description = description;
     }
 
-    public Date getDateDebut() {
-        return dateDebut;
+    public String getDate_debut() {
+        return date_debut;
     }
 
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
+    public void setDate_debut(String date_debut) {
+        this.date_debut = date_debut;
     }
 
-    public Date getDateFin() {
-        return dateFin;
+    public String getDate_fin() {
+        return date_fin;
     }
 
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
+    public void setDate_fin(String date_fin) {
+        this.date_fin = date_fin;
     }
 
     public Personne getPersonne() {
@@ -78,5 +81,13 @@ public class Experience {
 
     public void setPersonne(Personne personne) {
         this.personne = personne;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 }
