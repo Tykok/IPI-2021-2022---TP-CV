@@ -4,8 +4,10 @@ import com.example.cv.entities.enums.TypeSkills;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 @Entity
+@Transactional
 @Table(name = "skills")
 public class Skills {
 

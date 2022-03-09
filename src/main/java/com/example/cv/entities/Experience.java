@@ -4,9 +4,11 @@ import com.example.cv.entities.enums.TypeExperience;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.Date;
 
 @Entity
+@Transactional
 @Table(name = "experience")
 public class Experience {
 

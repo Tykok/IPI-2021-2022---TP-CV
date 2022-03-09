@@ -1,10 +1,12 @@
 package com.example.cv.entities;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Transactional
 @Table(name = "personne")
 public class Personne {
 
