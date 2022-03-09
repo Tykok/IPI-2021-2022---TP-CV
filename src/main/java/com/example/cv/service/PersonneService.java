@@ -52,25 +52,24 @@ public class PersonneService {
     public Personne save(Personne personne) throws InvalidArgumentException {
 
         // Check if the data is correct before insert into the database
-        boolean emailIsValid = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$").matcher(personne.getMail()).matches();
-        boolean phoneIsValid = Pattern.compile("^(\\d{3}[- .]?){2}\\d{4}$").matcher(personne.getPhone()).matches();
+        boolean emailIsValid = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$").matcher(personne.getMail()).matches();
+        boolean phoneIsValid = Pattern.compile("[0-9]{10}").matcher(personne.getPhone()).matches();
 
-        if(personne.getNom() == null || personne.getNom().isEmpty()){
+        if (personne.getNom() == null || personne.getNom().isEmpty()) {
             throw new InvalidArgumentException(StringExceptions.INVALID_ARGUMENT + "Nom");
         }
 
-        if(personne.getPrenom() == null || personne.getNom().isEmpty()){
+        if (personne.getPrenom() == null || personne.getNom().isEmpty()) {
             throw new InvalidArgumentException(StringExceptions.INVALID_ARGUMENT + "Prénom");
         }
 
-        if(!emailIsValid){
+        if (!emailIsValid) {
             throw new InvalidArgumentException(StringExceptions.INVALID_ARGUMENT + "Email (exemple@gmail.com)");
         }
 
-        if(!phoneIsValid){
+        if (!phoneIsValid) {
             throw new InvalidArgumentException(StringExceptions.INVALID_ARGUMENT + "Numéro de téléphone (Exemple : 06-51-01-23-45)");
         }
-
 
 
         // Insert into the database
