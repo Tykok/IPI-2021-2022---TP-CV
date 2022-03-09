@@ -32,7 +32,7 @@ public class PersonneWebService {
     }
 */
     @PostMapping()
-    public Personne save(@RequestBody Personne personne) {
+    public Personne save(@RequestBody Personne personne) throws InvalidArgumentException {
         return personneService.save(personne);
     }
 /*
