@@ -8,7 +8,9 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+        html, body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Roboto", sans-serif
+        }
     </style>
 </head>
 <body class="w3-light-grey">
@@ -31,40 +33,52 @@
                     <h2 th:text="|${personne.nom} ${personne.prenom}|"></h2>
                 </div>
                 <div class="w3-container">
-                    <span th:if="${personne.job}"><p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i><span th:text="${personne.job}"></span></p></span>
-                    <span th:if="${personne.adresse}"><p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i><span th:text="${personne.adresse}"></span></p></span>
-                    <span th:if="${personne.mail}"><p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><span th:text="${personne.mail}"></span></p></span>
-                    <span th:if="${personne.phone}"><p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i><span th:text="${personne.phone}"></span></p></span>
+                    <span th:if="${personne.job}"><p><i
+                            class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i><span
+                            th:text="${personne.job}"></span></p></span>
+                    <span th:if="${personne.adresse}"><p><i
+                            class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i><span
+                            th:text="${personne.adresse}"></span></p></span>
+                    <span th:if="${personne.mail}"><p><i
+                            class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><span
+                            th:text="${personne.mail}"></span></p></span>
+                    <span th:if="${personne.phone}"><p><i
+                            class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i><span
+                            th:text="${personne.phone}"></span></p></span>
                     <hr>
 
-                    <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
-                    <div th:each="skill : ${personne.skills}">
-                        <div th:if="${#strings.equals(skill.type, 'SKILLS')}">
-                            <p th:text="${skill.titre}"></p>
-                            <div class="w3-light-grey w3-round-xlarge w3-small">
-                                <div class="w3-container w3-center w3-round-xlarge w3-teal"
-                                     th:style="|width: ${skill.notation}%|"
-                                    th:text="|${skill.notation}%|"></div>
+                    <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b>
+                    </p>
+                    <div th:if="${personne.skills}">
+                        <div th:each="skill : ${personne.skills}">
+                            <div th:if="${#strings.equals(skill.type, 'SKILLS')}">
+                                <p th:text="${skill.titre}"></p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal"
+                                         th:style="|width: ${skill.notation}%|"
+                                         th:text="|${skill.notation}%|"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <br>
+                        <br>
 
-                    <p class="w3-large w3-text-theme"><b>
-                        <i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Langages</b></p>
-                    <div th:each="skill : ${personne.skills}">
-                        <div th:if="${#strings.equals(skill.type, 'LANGUES')}">
-                            <p th:text="${skill.titre}"></p>
-                            <div class="w3-light-grey w3-round-xlarge w3-small">
-                                <div class="w3-container w3-center w3-round-xlarge w3-teal"
-                                     th:style="|width: ${skill.notation}%|"
-                                     th:text="|${skill.notation}%|"></div>
+                        <p class="w3-large w3-text-theme"><b>
+                            <i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Langages</b></p>
+                        <div th:each="skill : ${personne.skills}">
+                            <div th:if="${#strings.equals(skill.type, 'LANGUES')}">
+                                <p th:text="${skill.titre}"></p>
+                                <div class="w3-light-grey w3-round-xlarge w3-small">
+                                    <div class="w3-container w3-center w3-round-xlarge w3-teal"
+                                         th:style="|width: ${skill.notation}%|"
+                                         th:text="|${skill.notation}%|"></div>
+                                </div>
                             </div>
                         </div>
+                        <br>
                     </div>
-                    <br>
                 </div>
-            </div><br>
+            </div>
+            <br>
 
             <!-- End Left Column -->
         </div>
@@ -75,16 +89,23 @@
             <div class="w3-container w3-card w3-white w3-margin-bottom">
                 <h2 class="w3-text-grey w3-padding-16">
                     <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Experience</h2>
-                <div th:each="experience : ${personne.experiences}">
-                    <div th:if="${#strings.equals(experience.type, 'PROJET') || #strings.equals(experience.type, 'PASSION')}">
-                        <div class="w3-container">
-                            <h5 class="w3-opacity"><b th:text="${experience.titre}"></b></h5>
-                            <span th:if="${experience.date_debut}">
-                                <span th:if="${experience.date_fin}"><h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i><span th:text="|${experience.date_debut} - ${experience.date_fin}|"></span></h6></span>
-                                <span th:if="not ${experience.date_fin}"><h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i><span th:text="${experience.date_debut}"></span> - <span class="w3-tag w3-teal w3-round">Current</span></h6></span>
+                <div th:if="${personne.experiences}">
+                    <div th:each="experience : ${personne.experiences}">
+                        <div th:if="${#strings.equals(experience.type, 'PROJET') || #strings.equals(experience.type, 'PASSION')}">
+                            <div class="w3-container">
+                                <h5 class="w3-opacity"><b th:text="${experience.titre}"></b></h5>
+                                <span th:if="${experience.date_debut}">
+                                <span th:if="${experience.date_fin}"><h6 class="w3-text-teal"><i
+                                        class="fa fa-calendar fa-fw w3-margin-right"></i><span
+                                        th:text="|${experience.date_debut} - ${experience.date_fin}|"></span></h6></span>
+                                <span th:if="not ${experience.date_fin}"><h6 class="w3-text-teal"><i
+                                        class="fa fa-calendar fa-fw w3-margin-right"></i><span
+                                        th:text="${experience.date_debut}"></span> - <span
+                                        class="w3-tag w3-teal w3-round">Current</span></h6></span>
                             </span>
-                            <p th:text="${experience.description}"></p>
-                            <hr>
+                                <p th:text="${experience.description}"></p>
+                                <hr>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -98,8 +119,13 @@
                         <div class="w3-container">
                             <h5 class="w3-opacity"><b th:text="${experience.titre}"></b></h5>
                             <span th:if="${experience.date_debut}">
-                                <span th:if="${experience.date_fin}"><h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i><span th:text="|${experience.date_debut} - ${experience.date_fin}|"></span></h6></span>
-                                <span th:if="not ${experience.date_fin}"><h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i><span th:text="${experience.date_debut}"></span> - <span class="w3-tag w3-teal w3-round">Current</span></h6></span>
+                                <span th:if="${experience.date_fin}"><h6 class="w3-text-teal"><i
+                                        class="fa fa-calendar fa-fw w3-margin-right"></i><span
+                                        th:text="|${experience.date_debut} - ${experience.date_fin}|"></span></h6></span>
+                                <span th:if="not ${experience.date_fin}"><h6 class="w3-text-teal"><i
+                                        class="fa fa-calendar fa-fw w3-margin-right"></i><span
+                                        th:text="${experience.date_debut}"></span> - <span
+                                        class="w3-tag w3-teal w3-round">Current</span></h6></span>
                             </span>
                             <p th:text="${experience.description}"></p>
                             <hr>
